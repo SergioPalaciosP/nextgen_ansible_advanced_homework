@@ -9,6 +9,21 @@
     backup: yes
 
 - name: enable repos
- 
-- name: install base tools and packages
+  template:
+    src: repos_template.j2
+    dest: /etc/yum.repos.d/3_tier_app_internal.repo
 
+- name: yum clean
+  shell: yum clean all
+  
+- name: install base tools and packages
+  yum:
+    name:
+      - python-pip
+    state: present
+
+- name: Inject public key
+  authorized_key:
+    user: cloud-user
+    state: present
+    key: openstack.pub.j2
