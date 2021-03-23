@@ -21,9 +21,3 @@
     name:
       - python-pip
     state: present
-
-- name: Inject public key
-  authorized_key:
-    user: cloud-user
-    state: present
-    key: openstack.pub.j2
