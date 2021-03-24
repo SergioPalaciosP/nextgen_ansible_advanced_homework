@@ -111,4 +111,8 @@ See documentation in roles folders
 - In the template "10_Smoke test Prod env" I had an error because the cfg file used in lb-tier role (haproxy.cfg.j2) is not prepared for be used in QA environment and AWS environment. The var "hostvars[host]['inventory_hostname']" is returning the IP address for the in-memory inventory used for QA env and the host name for the dinamic inventory used for AWS. Two solutions could be used:
 	- Duplicate the role for the loadbalancer configuration keeping as is for QA environment and changing the value in the cfg file for the role used for AWS (change {{hostvars[host]['inventory_hostname']}} by {{hostvars[host]['internal_ip_address']}}).
 	- Duplicate just the j2 file in the templates folder with the changes mentioned before and use a conditional execution in the tasks file to use each file depending the inventory used.
+- About the grading playbook, two remarks:
+	- The task Access Website for the QA environment has been corrected as the item dict fact that is being compared with "frontend" must be name instead of hostname. changing it the test pass.
+	- For the Prod environment the problem is the same that running the workflow, the config file must be edited to configure the lb with the value under internal_ip_address. Making the propper changes and running again, it works.
+
 
