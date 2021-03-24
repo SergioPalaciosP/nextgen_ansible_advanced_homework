@@ -91,7 +91,7 @@ Executed in control node (no template associated):
 
 ## Roles
 
-Documentation included in each role
+See documentation in roles folders
 
 | Playbook name       | Description                                                              |
 |---------------------|--------------------------------------------------------------------------|
@@ -103,7 +103,6 @@ Documentation included in each role
 | osp-servers         | Provision OSP Instances role                                             |
 | osp-instance-delete | Delete OSP Instances role                                                |
 | osp-facts           | Generate in-memory inventory for OSP instances role                      |
-| tower-cli-setup     | Install tower-cli and create config file                                 |
 | config-tower        | Role to configure ansible tower job templates and workflow               |
 
 ## Notes
