@@ -1,7 +1,7 @@
-Role Name
-=========
+osp-servers
+===========
 
-A brief description of the role goes here.
+Instance creation according the info in var osp_servers
 
 Requirements
 ------------
@@ -10,22 +10,57 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 
 Role Variables
 --------------
+Example of dict variable used in role
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+osp_servers:
+  frontend:
+    name: frontend
+    state: present
+    image: rhel-guest
+    key_name: ansible_ssh
+    flavor: m1.medium
+    security_group: frontend
+    meta:
+      - { group: frontends, deployment_name: QA}
+  app1:
+    name: app1
+    state: present
+    image: rhel-guest
+    key_name: ansible_ssh
+    flavor: m1.medium
+    security_group: apps
+    meta:
+      - { group: apps, deployment_name: QA}
+  app2:
+    name: app2
+    state: present
+    image: rhel-guest
+    key_name: ansible_ssh
+    flavor: m1.medium
+    security_group: apps
+    meta:
+      - { group: apps, deployment_name: QA}
+  db:
+    name: db
+    state: present
+    image: rhel-guest
+    key_name: ansible_ssh
+    flavor: m1.medium
+    security_group: db
+    meta:
+      - { group: appdbs, deployment_name: QA}
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+- hosts: localhost
+  connection: local
+  become: no
+  gather_facts: true
+  roles:
+   - osp-servers
 
 License
 -------

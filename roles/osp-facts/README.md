@@ -1,12 +1,12 @@
-Role Name
+osp-facts
 =========
 
-A brief description of the role goes here.
+Fetch VM info from OpenStack to create an inmemory inventory
 
 Requirements
 ------------
+Connection with Openstack to retrieve the information
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
 Role Variables
 --------------
@@ -23,9 +23,10 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: workstation
+      gather_facts: false
       roles:
-         - { role: username.rolename, x: 42 }
+        - name: osp-facts
 
 License
 -------

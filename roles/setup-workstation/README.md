@@ -1,7 +1,7 @@
-Role Name
-=========
+setup-workstation
+=================
 
-A brief description of the role goes here.
+Configure a control server to be used as isolated node and to be used as workstation for the LAB
 
 Requirements
 ------------
@@ -23,9 +23,10 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+- hosts: workstation
+  become: yes
+  roles:
+    - setup-workstation
 
 License
 -------

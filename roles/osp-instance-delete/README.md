@@ -1,7 +1,7 @@
-Role Name
+osp-instance-delete
 =========
 
-A brief description of the role goes here.
+Deletion of Openstack instances based on a previous fetch of live instances
 
 Requirements
 ------------
@@ -23,9 +23,11 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+- hosts: workstation
+  become: yes
+  roles:
+    - osp-instance-delete
+
 
 License
 -------
