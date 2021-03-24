@@ -1,3 +1,5 @@
+#DOC
+
 ##Config Tower
 
 Initial Tower configuration and objects creation (templates, inventories and credentials) 
